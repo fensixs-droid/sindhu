@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Sindhu Nutrition</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Sans+Tamil:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --gold:#c9a227;--gold2:#e8c84a;--gold3:#f5e08a;
+  --green:#1a6b3c;--green2:#2d9d5c;--green3:#4cba7a;
+  --dark:#030200;--dark2:#080500;--dark3:#0f0a02;
+  --card:#100c02;--border:#c9a22728;
+  --text:#f8f4e8;--muted:#9a8a60;--bright:#fffbe8;
+}
+html,body{height:100%;background:var(--dark);font-family:"Noto Sans Tamil",sans-serif;color:var(--text);overflow:hidden;}
+
+/* PARTICLES */
+#pts{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.pt{position:absolute;border-radius:50%;animation:rise linear infinite;}
+@keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0;}15%{opacity:.4;}85%{opacity:.05;}100%{transform:translateY(-10vh);opacity:0;}}
+
+/* ===== ENTRANCE PAGE ===== */
+#entrance{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 24px;background:radial-gradient(ellipse at 50% 40%,#0d0800 0%,#050300 55%,#020100 100%);transition:opacity 1s,transform 1s;}
+#entrance.out{opacity:0;transform:scale(1.04) translateY(-16px);pointer-events:none;}
+
+.ent-bg1{position:absolute;width:500px;height:500px;background:radial-gradient(circle,#c9a22712 0%,transparent 70%);top:-100px;left:-150px;animation:orbFloat 10s ease-in-out infinite;}
+.ent-bg2{position:absolute;width:350px;height:350px;background:radial-gradient(circle,#1a6b3c10 0%,transparent 70%);bottom:-80px;right:-100px;animation:orbFloat 8s ease-in-out infinite reverse;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0);}50%{transform:translate(25px,-25px);}}
+
+.ent-logo-wrap{animation:logoEntrance 1.2s cubic-bezier(.175,.885,.32,1.275) both;margin-bottom:20px;}
+@keyframes logoEntrance{from{transform:scale(0) rotate(-20deg);opacity:0;}to{transform:scale(1) rotate(0);opacity:1;}}
+
+.ent-logo-ring{width:110px;height:110px;border-radius:50%;border:1.5px solid #c9a22740;display:flex;align-items:center;justify-content:center;animation:ringGlow 3s ease-in-out infinite 1.5s;box-shadow:0 0 40px #c9a22720;}
+@keyframes ringGlow{0%,100%{box-shadow:0 0 20px #c9a22720,0 0 0 0 #c9a22720;}50%{box-shadow:0 0 60px #c9a22740,0 0 20px 5px #c9a22710;}}
+
+.ent-logo-img{width:90px;height:90px;border-radius:50%;object-fit:cover;}
+.ent-logo-emoji{width:86px;height:86px;border-radius:50%;background:linear-gradient(135deg,#1a6b3c,#2d9d5c,#c9a227);display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 0 40px #c9a22740;}
+
+.ent-world{font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;animation:fadeUp 1s .5s both;}
+.ent-brand{font-family:"Cinzel",serif;font-size:clamp(1.6rem,7vw,3rem);font-weight:900;letter-spacing:.1em;line-height:1.1;background:linear-gradient(135deg,#c9a227,#f5e08a,#c9a227);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 30px #c9a22740);animation:fadeUp 1s .7s both;}
+.ent-tagline{font-size:clamp(.75rem,2.8vw,.88rem);color:var(--green3);letter-spacing:.2em;text-transform:uppercase;margin-top:6px;animation:fadeUp 1s .9s both;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+.ent-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,#c9a22760,transparent);margin:18px auto;animation:fadeUp 1s 1s both;}
+
+.ent-welcome{font-size:clamp(.9rem,3.2vw,1.05rem);color:var(--bright);line-height:1.8;animation:fadeUp 1s 1.1s both;max-width:300px;}
+.ent-welcome span{color:var(--gold2);}
+
+.ent-live{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;animation:fadeUp 1s 1.2s both;background:#c9a22710;border:1px solid #c9a22725;border-radius:30px;padding:7px 16px;}
+.ent-live-dot{width:7px;height:7px;border-radius:50%;background:var(--green3);animation:livePulse 1.5s ease-in-out infinite;}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.4);}}
+.ent-live span{font-size:.7rem;color:var(--gold2);font-weight:600;}
+
+.ent-lang{display:flex;gap:10px;margin-top:22px;animation:fadeUp 1s 1.3s both;}
+.ent-btn{padding:13px 26px;border-radius:50px;font-family:"Cinzel",serif;font-size:.85rem;font-weight:700;letter-spacing:.1em;cursor:pointer;transition:all .2s;border:none;}
+.ent-btn.ta{background:linear-gradient(135deg,#1a6b3c,#2d9d5c);color:#f8f4e8;box-shadow:0 0 30px #1a6b3c55;animation:btnPulse 2.5s 2s ease-in-out infinite;}
+.ent-btn.en{background:transparent;border:1.5px solid #c9a22750;color:var(--gold2);}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 20px #1a6b3c33;}50%{box-shadow:0 0 45px #1a6b3c99;}}
+.ent-btn:active{transform:scale(.96);}
+
+/* ===== APP ===== */
+#app{display:none;flex-direction:column;height:100vh;max-width:540px;margin:0 auto;position:relative;z-index:10;}
+#app.show{display:flex;}
+
+/* HEADER */
+.hdr{background:rgba(3,2,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.hdr-logo{width:36px;height:36px;border-radius:50%;border:1.5px solid #c9a22740;flex-shrink:0;object-fit:cover;background:linear-gradient(135deg,#1a6b3c,#c9a227);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.hdr-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+.hdr-info{flex:1;}
+.hdr-name{font-family:"Cinzel",serif;font-size:.85rem;font-weight:700;background:linear-gradient(135deg,#c9a227,#f5e08a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hdr-status{font-size:.58rem;color:var(--muted);display:flex;align-items:center;gap:4px;margin-top:1px;}
+.hdr-dot{width:5px;height:5px;border-radius:50%;background:#4cba7a;animation:blink 1.5s infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+
+/* PROGRESS */
+.pgwrap{background:rgba(3,2,0,.97);padding:6px 14px 4px;flex-shrink:0;}
+.pgbg{height:2px;background:#ffffff08;border-radius:2px;overflow:hidden;}
+.pgfill{height:2px;background:linear-gradient(90deg,#1a6b3c,#c9a227,#f5e08a);border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1);width:0%;}
+.pgtext{font-size:.55rem;color:var(--muted);text-align:right;margin-top:2px;}
+
+/* CHAT */
+.chat{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:1px;scroll-behavior:smooth;}
+.chat::-webkit-scrollbar{width:2px;}
+.chat::-webkit-scrollbar-thumb{background:#c9a22720;border-radius:2px;}
+
+.mrow{display:flex;gap:7px;align-items:flex-end;margin-bottom:10px;animation:mIn .3s ease both;}
+.mrow.u{flex-direction:row-reverse;}
+@keyframes mIn{from{opacity:0;transform:translateY(8px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+.av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;overflow:hidden;}
+.av.b{background:linear-gradient(135deg,#1a6b3c,#c9a227);border:1px solid #c9a22730;}
+.av.b img{width:28px;height:28px;object-fit:cover;border-radius:50%;}
+.av.u{background:linear-gradient(135deg,#2d3561,#454d8a);}
+
+/* BOT bubble */
+.bub.b{
+  background:linear-gradient(145deg,#130f03,#0d0900);
+  border:1px solid #c9a22722;
+  border-radius:4px 16px 16px 16px;
+  color:var(--bright);
+  padding:11px 14px;
+  max-width:82%;
+  font-size:.84rem;
+  line-height:1.75;
+  white-space:pre-line;
+  box-shadow:0 3px 18px #c9a22710,inset 0 1px 0 #c9a22712;
+}
+
+/* USER bubble */
+.bub.u{
+  background:linear-gradient(135deg,#1a6b3c,#2d9d5c);
+  border-radius:16px 4px 16px 16px;
+  color:#fff;
+  padding:11px 14px;
+  max-width:78%;
+  font-size:.84rem;
+  line-height:1.65;
+  box-shadow:0 3px 18px #1a6b3c40;
+}
+
+/* TYPING */
+.tdots{display:flex;gap:5px;padding:6px 4px;align-items:center;}
+.tdots span{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:td 1.2s ease-in-out infinite;}
+.tdots span:nth-child(2){animation-delay:.2s;}
+.tdots span:nth-child(3){animation-delay:.4s;}
+@keyframes td{0%,80%,100%{transform:scale(.4);opacity:.3;}40%{transform:scale(1);opacity:1;}}
+
+/* FOOTER */
+.foot{background:rgba(3,2,0,.98);border-top:1px solid var(--border);padding:9px 12px;flex-shrink:0;}
+.opts{display:flex;flex-direction:column;gap:6px;}
+.opt{display:flex;align-items:center;gap:9px;background:transparent;border:1px solid #c9a22720;border-radius:12px;padding:11px 14px;color:var(--bright);cursor:pointer;font-size:.82rem;font-family:"Noto Sans Tamil",sans-serif;transition:all .15s;text-align:left;width:100%;}
+.opt:active,.opt:hover{border-color:var(--gold);color:var(--gold);background:#c9a22708;transform:translateX(3px);}
+.opt:disabled{opacity:.3;cursor:not-allowed;transform:none;}
+.opt-icon{font-size:1rem;flex-shrink:0;}
+.irow{display:flex;gap:7px;}
+.inp{flex:1;background:#0a0800;border:1px solid #c9a22728;border-radius:12px;padding:11px 13px;color:var(--bright);font-size:.84rem;font-family:"Noto Sans Tamil",sans-serif;outline:none;transition:border-color .2s;}
+.inp:focus{border-color:var(--gold);box-shadow:0 0 0 3px #c9a22712;}
+.inp::placeholder{color:#4a3a18;}
+.sbtn{background:linear-gradient(135deg,#1a6b3c,#2d9d5c);border:none;border-radius:12px;padding:0 15px;color:#fff;cursor:pointer;font-size:1rem;transition:transform .15s;font-weight:700;}
+.sbtn:active{transform:scale(.95);}
+
+/* GENDER ROW */
+.gender-row{display:flex;gap:8px;}
+.gender-btn{flex:1;padding:13px;border:1px solid #c9a22728;border-radius:12px;background:transparent;color:var(--bright);cursor:pointer;font-size:.85rem;font-family:"Noto Sans Tamil",sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.gender-btn:active{border-color:var(--gold);background:#c9a22710;color:var(--gold);}
+
+/* BMI CARD */
+.bmi-card{background:linear-gradient(145deg,#120e02,#0a0700);border:1px solid #c9a22730;border-radius:18px;padding:18px;margin:3px 0;animation:mIn .4s ease both;}
+.bmi-title{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;margin-bottom:14px;text-align:center;}
+.bmi-gauge{position:relative;width:130px;height:65px;margin:0 auto 10px;}
+.bmi-arc{width:130px;height:65px;}
+.bmi-val{text-align:center;font-size:1.8rem;font-weight:700;font-family:"Cinzel",serif;}
+.bmi-label{text-align:center;font-size:.78rem;color:var(--muted);margin-top:3px;}
+.score-wrap{margin:12px 0;}
+.score-bar{height:6px;background:#ffffff08;border-radius:4px;margin:8px 0 4px;overflow:hidden;}
+.score-fill{height:6px;border-radius:4px;background:linear-gradient(90deg,#1a6b3c,#c9a227);width:0%;transition:width 1.4s cubic-bezier(.4,0,.2,1);}
+.score-text{font-size:.65rem;color:var(--muted);display:flex;justify-content:space-between;}
+.prod-badge{background:#c9a22710;border:1px solid #c9a22728;border-radius:10px;padding:10px 13px;margin-top:12px;font-size:.8rem;color:var(--gold2);line-height:1.6;}
+
+/* ANALYSIS CARD */
+.analysis-card{background:linear-gradient(145deg,#0a1208,#060e04);border:1px solid #2d9d5c40;border-radius:16px;padding:16px;margin:3px 0;animation:mIn .4s ease both;}
+.analysis-title{font-size:.65rem;color:var(--green3);text-transform:uppercase;letter-spacing:.2em;margin-bottom:10px;}
+.analysis-item{font-size:.8rem;color:var(--bright);padding:5px 0;border-bottom:1px solid #ffffff06;display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+
+/* PAYMENT CARD */
+.pay-card{background:#0a0800;border:1px solid #c9a22730;border-radius:18px;padding:18px;margin:3px 0;animation:mIn .4s ease both;}
+.pay-timer{text-align:center;background:linear-gradient(135deg,#120e02,#1a1402);border:1px solid #c9a22740;border-radius:12px;padding:10px;margin-bottom:12px;}
+.timer-label{font-size:.6rem;color:#c9a227aa;letter-spacing:.12em;text-transform:uppercase;}
+.timer-val{font-family:"Cinzel",serif;font-size:1.5rem;font-weight:700;color:var(--gold);letter-spacing:.2em;}
+.fomo-bar{background:#1a6b3c12;border:1px solid #2d9d5c28;border-radius:8px;padding:7px 10px;margin-bottom:12px;font-size:.73rem;color:var(--green3);text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;}
+.fomo-pulse{width:7px;height:7px;border-radius:50%;background:var(--green3);animation:livePulse 1s ease-in-out infinite;flex-shrink:0;}
+.price-box{text-align:center;margin-bottom:14px;padding:14px;background:#c9a22708;border-radius:12px;border:1px solid #c9a22720;}
+.price-was{font-size:.78rem;color:var(--muted);text-decoration:line-through;margin-bottom:4px;}
+.price-now{font-size:2.4rem;font-weight:700;color:var(--gold);font-family:"Cinzel",serif;line-height:1;}
+.price-note{font-size:.68rem;color:var(--green3);margin-top:4px;}
+.pkg-list{margin-bottom:14px;}
+.pkg-item{font-size:.8rem;color:var(--bright);padding:6px 0;border-bottom:1px solid #ffffff06;display:flex;align-items:center;gap:8px;}
+.pkg-item span.check{color:var(--gold);font-size:.9rem;}
+.pay-btn{width:100%;padding:14px;background:linear-gradient(135deg,#1a6b3c,#2d9d5c);border:none;border-radius:14px;font-family:"Cinzel",serif;font-size:.9rem;font-weight:700;color:#fff;cursor:pointer;letter-spacing:.08em;box-shadow:0 0 30px #1a6b3c44;margin-bottom:10px;transition:transform .15s;animation:payGlow 2s ease-in-out infinite;}
+@keyframes payGlow{0%,100%{box-shadow:0 0 20px #1a6b3c33;}50%{box-shadow:0 0 50px #1a6b3c88;}}
+.pay-btn:active{transform:scale(.98);}
+.share-alt{width:100%;padding:11px;border:1px solid #c9a22730;border-radius:10px;background:transparent;color:var(--gold);font-size:.8rem;font-family:"Noto Sans Tamil",sans-serif;cursor:pointer;text-align:center;}
+.qr-section{display:none;text-align:center;margin-bottom:12px;}
+.qr-section img{width:160px;height:160px;border-radius:12px;border:1px solid var(--border);}
+.upi-label{font-size:.7rem;color:var(--muted);margin-top:6px;margin-bottom:10px;}
+.upi-label span{color:var(--gold);}
+.upi-btns{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
+.upi-btn{padding:10px;border-radius:10px;border:1px solid #c9a22728;background:transparent;color:var(--bright);cursor:pointer;font-size:.76rem;font-family:"Noto Sans Tamil",sans-serif;transition:all .15s;}
+.upi-btn:active{border-color:var(--gold);color:var(--gold);}
+.paid-confirm{width:100%;padding:12px;border:1px solid #2d9d5c44;border-radius:10px;background:transparent;color:var(--green3);font-size:.8rem;font-family:"Noto Sans Tamil",sans-serif;cursor:pointer;}
+
+/* SHARE CARD */
+.share-card{background:#0a0800;border:1px solid #c9a22730;border-radius:18px;padding:18px;margin:3px 0;animation:mIn .4s ease both;}
+.ref-code-box{background:#c9a22712;border:1px solid #c9a22730;border-radius:10px;padding:12px;text-align:center;margin-bottom:14px;}
+.ref-code-label{font-size:.62rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px;}
+.ref-code{font-family:"Cinzel",serif;font-size:1.3rem;font-weight:700;color:var(--gold);letter-spacing:.3em;}
+.ref-reward{background:#1a6b3c12;border:1px solid #2d9d5c28;border-radius:10px;padding:12px;margin-bottom:14px;}
+.ref-reward-title{font-size:.75rem;color:var(--green3);font-weight:600;margin-bottom:6px;}
+.ref-reward-item{font-size:.75rem;color:var(--bright);padding:3px 0;display:flex;align-items:center;gap:7px;}
+.share-btn{width:100%;padding:13px;background:linear-gradient(135deg,#25d366,#128c7e);border:none;border-radius:13px;color:#fff;font-size:.88rem;font-family:"Noto Sans Tamil",sans-serif;cursor:pointer;font-weight:700;}
+
+/* THANK YOU CARD */
+.ty-card{background:#0a0800;border:1px solid #c9a22730;border-radius:18px;padding:22px 16px;text-align:center;margin:3px 0;animation:mIn .4s ease both;}
+.ty-icon{font-size:3rem;margin-bottom:10px;animation:popIn .6s cubic-bezier(.175,.885,.32,1.275) both;}
+@keyframes popIn{from{transform:scale(0) rotate(-10deg);opacity:0;}to{transform:scale(1) rotate(0);opacity:1;}}
+.ty-name{font-size:1rem;color:var(--gold2);font-weight:700;margin-bottom:4px;}
+.ty-ref{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--gold);letter-spacing:.2em;margin:10px 0;background:#c9a22710;border:1px solid #c9a22728;border-radius:8px;padding:8px;}
+.ty-msg{font-size:.8rem;color:var(--bright);line-height:1.7;margin:12px 0;padding:12px;background:#1a6b3c0a;border-radius:10px;border:1px solid #2d9d5c20;}
+.hwh{display:flex;justify-content:center;gap:14px;margin:14px 0;}
+.hwh-item{text-align:center;}
+.hwh-icon{font-size:1.4rem;display:block;margin-bottom:3px;}
+.hwh-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+.contact-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px;}
+.cbtn{padding:13px;border-radius:12px;border:none;font-size:.82rem;font-family:"Noto Sans Tamil",sans-serif;cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:center;gap:5px;}
+.cbtn.call{background:linear-gradient(135deg,#c9a227,#e8c84a);color:#030200;}
+.cbtn.wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;}
+
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(12px);background:#130f03;border:1px solid var(--gold);border-radius:14px;padding:11px 18px;font-size:.78rem;color:var(--bright);box-shadow:0 0 30px #c9a22730;z-index:500;opacity:0;transition:all .3s;pointer-events:none;max-width:290px;text-align:center;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* REACT */
+.react{font-size:.68rem;color:var(--muted);margin-left:38px;margin-top:-6px;margin-bottom:7px;animation:mIn .3s ease both;}
+
+/* CONFETTI */
+.conf{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;}
+
+/* ADMIN */
+#adminPanel{display:none;position:fixed;inset:0;z-index:999;background:#030200;overflow-y:auto;padding:20px 16px;}
+#adminLogin{position:fixed;inset:0;z-index:1000;background:#030200;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+.admin-login-box{background:#0f0a02;border:1px solid #c9a22730;border-radius:20px;padding:28px 22px;width:100%;max-width:320px;text-align:center;}
+.admin-title{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--gold);margin-bottom:6px;}
+.admin-sub{font-size:.72rem;color:var(--muted);margin-bottom:20px;}
+.admin-inp{width:100%;background:#0a0800;border:1px solid #c9a22728;border-radius:10px;padding:12px;color:var(--bright);font-size:.85rem;outline:none;margin-bottom:10px;text-align:center;}
+.admin-btn{width:100%;padding:13px;background:linear-gradient(135deg,#1a6b3c,#2d9d5c);border:none;border-radius:10px;color:#fff;font-size:.88rem;cursor:pointer;font-family:"Cinzel",serif;font-weight:700;}
+.admin-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #c9a22720;}
+.admin-hdr-title{font-family:"Cinzel",serif;font-size:1rem;color:var(--gold);}
+.admin-close{background:transparent;border:1px solid #c9a22730;border-radius:8px;padding:6px 12px;color:var(--muted);cursor:pointer;font-size:.75rem;}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.stat-box{background:#0f0a02;border:1px solid #c9a22720;border-radius:12px;padding:14px;text-align:center;}
+.stat-num{font-family:"Cinzel",serif;font-size:1.5rem;font-weight:700;color:var(--gold);}
+.stat-label{font-size:.62rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.1em;}
+.reg-item{background:#0f0a02;border:1px solid #c9a22718;border-radius:12px;padding:14px;margin-bottom:10px;}
+.reg-name{font-size:.88rem;font-weight:700;color:var(--gold2);margin-bottom:4px;}
+.reg-detail{font-size:.72rem;color:var(--bright);line-height:1.7;}
+.reg-badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:.62rem;font-weight:600;margin-top:6px;}
+.reg-badge.job{background:#1a6b3c30;color:var(--green3);}
+.reg-badge.biz{background:#c9a22720;color:var(--gold);}
+.reg-badge.health{background:#2d3561;color:#8888ff;}
+.reg-date{font-size:.62rem;color:var(--muted);margin-top:4px;}
+.admin-section-title{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;}
+.no-regs{text-align:center;color:var(--muted);font-size:.82rem;padding:30px 0;}
+.admin-trigger{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;background:#0f0a02;border:1px solid #c9a22730;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;z-index:50;opacity:.4;}
+</style>
+</head>
+<body>
+<div id="pts"></div>
+
+<!-- ENTRANCE PAGE -->
+<div id="entrance">
+  <div class="ent-bg1"></div>
+  <div class="ent-bg2"></div>
+
+  <div class="ent-logo-wrap">
+    <div class="ent-logo-ring">
+      <img src="https://i.imgur.com/placeholder.png" alt="SNDU Logo" class="ent-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="ent-logo-emoji" id="entLogoFallback">🌿</div>
+    </div>
+  </div>
+
+  <div class="ent-world">World No.1 Nutrition Company</div>
+  <div class="ent-brand">SINDHU<br/>NUTRITION</div>
+  <div class="ent-tagline">Health • Wealth • Happiness</div>
+
+  <div class="ent-divider"></div>
+
+  <div class="ent-welcome">
+    உங்களை <span>அன்போடு வரவேற்கிறோம்!</span><br/>
+    உங்கள் வாழ்க்கையை மாற்றும் பயணம் இங்கே தொடங்குகிறது.
+  </div>
+
+  <div class="ent-live">
+    <div class="ent-live-dot"></div>
+    <span id="liveCount">இன்று 1,247+ பேர் join ஆனார்கள்!</span>
+  </div>
+
+  <div class="ent-lang">
+    <button class="ent-btn ta" onclick="startApp('ta')">🌿 தமிழில் தொடர்</button>
+    <button class="ent-btn en" onclick="startApp('en')">English →</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="hdr">
+    <div class="hdr-logo" id="hdrLogo">
+      <img src="https://i.imgur.com/placeholder.png" alt="SNDU" onerror="this.parentElement.textContent='🌿'"/>
+    </div>
+    <div class="hdr-info">
+      <div class="hdr-name">Sindhu Nutrition</div>
+      <div class="hdr-status"><div class="hdr-dot"></div><span id="hdrStatus">Online — உங்களுக்காக காத்திருக்கிறேன்</span></div>
+    </div>
+  </div>
+
+  <div class="pgwrap">
+    <div class="pgbg"><div class="pgfill" id="pgfill"></div></div>
+    <div class="pgtext" id="pgtext"></div>
+  </div>
+
+  <div class="chat" id="chat"></div>
+
+  <div class="foot" id="foot">
+    <div class="opts" id="opts"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ADMIN LOGIN -->
+<div id="adminLogin" style="display:none;">
+  <div class="admin-login-box">
+    <div class="admin-title">🔐 Admin Panel</div>
+    <div class="admin-sub">Sindhu Nutrition — Owner Access Only</div>
+    <input class="admin-inp" type="password" id="adminPwdInp" placeholder="Password"/>
+    <button class="admin-btn" onclick="checkAdminPwd()">Login →</button>
+    <div style="margin-top:12px;">
+      <button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--muted);font-size:.75rem;cursor:pointer;">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+  <div class="admin-hdr">
+    <div class="admin-hdr-title">🌿 Admin Dashboard</div>
+    <button class="admin-close" onclick="closeAdmin()">Close ✕</button>
+  </div>
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Total Registrations</div></div>
+    <div class="stat-box"><div class="stat-num" id="statPaid">0</div><div class="stat-label">Paid ₹99</div></div>
+    <div class="stat-box"><div class="stat-num" id="statJob">0</div><div class="stat-label">Job Interest</div></div>
+    <div class="stat-box"><div class="stat-num" id="statBiz">0</div><div class="stat-label">Business</div></div>
+  </div>
+  <div class="admin-section-title">Recent Registrations</div>
+  <div id="regList"></div>
+</div>
+
+<!-- ADMIN TRIGGER (hidden tap) -->
+<div class="admin-trigger" onclick="openAdminLogin()" title="Admin">⚙️</div>
+
+<script>
+// ===== CONFIG =====
+const CFG = {
+  phone: '9150830114',
+  upi: 'karuava9@okaxis',
+  name: 'S Santhosh',
+  amount: 99,
+  adminPwd: 'SANTHOSH@41',
+  brand: 'Sindhu Nutrition',
+  joinsToday: Math.floor(Math.random()*60)+40,
+  logoUrl: '' // Will use fallback emoji
+};
+
+// ===== STATE =====
+let S = {
+  lang:'ta', name:'', gender:'', salutation:'',
+  city:'', phone:'', source:'', interest:'',
+  weight:'', height:'', medicine:'', healthProblem:'',
+  bmi:0, bmiLabel:'', score:0, goal:'',
+  jobCurrent:'', jobEdu:'', jobSalary:'', jobExp:'',
+  bizExp:'', bizPrevious:'', bizTeam:'',
+  refId:'', payment:'', step:'',
+  timerInterval:null
+};
+
+// ===== PARTICLES =====
+(function(){
+  const c=document.getElementById('pts');
+  for(let i=0;i<20;i++){
+    const d=document.createElement('div');
+    d.className='pt';
+    const s=Math.random()*4+1.5;
+    const clr=Math.random()>.5?'#c9a22730':'#1a6b3c25';
+    d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${clr};animation-duration:${Math.random()*14+8}s;animation-delay:-${Math.random()*22}s;`;
+    c.appendChild(d);
+  }
+})();
+
+// Logo — use uploaded logo as base64 embedded
+(function(){
+  // Try to load logo — fallback to emoji if fails
+  const imgs = document.querySelectorAll('.ent-logo-img, .hdr-logo img');
+  imgs.forEach(img => {
+    img.onerror = function(){
+      if(this.parentElement.id==='entLogoFallback'||this.parentElement.className==='ent-logo-ring'){
+        document.getElementById('entLogoFallback').style.display='flex';
+      }
+      this.style.display='none';
+    };
+  });
+  // Set fallback visible by default since we don't have actual URL
+  const fallback = document.getElementById('entLogoFallback');
+  if(fallback) fallback.style.display='flex';
+  const hdrLogo = document.getElementById('hdrLogo');
+  if(hdrLogo) hdrLogo.textContent='🌿';
+})();
+
+// Live count
+document.getElementById('liveCount').textContent=`இன்று ${CFG.joinsToday+1200}+ பேர் join ஆனார்கள்!`;
+
+// ===== HELPERS =====
+function setProgress(pct,txt){
+  document.getElementById('pgfill').style.width=pct+'%';
+  document.getElementById('pgtext').textContent=txt;
+}
+function scroll(){
+  const c=document.getElementById('chat');
+  setTimeout(()=>c.scrollTo({top:c.scrollHeight,behavior:'smooth'}),50);
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+function disableOpts(){
+  document.querySelectorAll('.opt,.upi-btn,.gender-btn,.share-btn,.paid-confirm,.share-alt').forEach(b=>b.disabled=true);
+}
+function clearOpts(){document.getElementById('opts').innerHTML='';}
+
+function addMsg(role,html){
+  const c=document.getElementById('chat');
+  const row=document.createElement('div');
+  row.className='mrow '+(role==='b'?'':'u');
+  const av=document.createElement('div');
+  av.className='av '+role;
+  av.textContent=role==='b'?'🌿':'👤';
+  const bub=document.createElement('div');
+  bub.className='bub '+role;
+  bub.innerHTML=html;
+  row.appendChild(av);row.appendChild(bub);
+  c.appendChild(row);scroll();return bub;
+}
+function addTyping(){
+  const c=document.getElementById('chat');
+  const row=document.createElement('div');
+  row.className='mrow';row.id='typing';
+  row.innerHTML=`<div class="av b">🌿</div><div class="bub b"><div class="tdots"><span></span><span></span><span></span></div></div>`;
+  c.appendChild(row);scroll();
+}
+function removeTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+async function addBot(html,delay=700){
+  return new Promise(resolve=>{
+    addTyping();
+    setTimeout(()=>{removeTyping();addMsg('b',html);resolve();},delay);
+  });
+}
+function addUser(txt){addMsg('u',txt);}
+function addReact(txt){
+  const c=document.getElementById('chat');
+  const r=document.createElement('div');
+  r.className='react';r.textContent=txt;
+  c.appendChild(r);scroll();
+}
+function addCustom(html){
+  const c=document.getElementById('chat');
+  const d=document.createElement('div');
+  d.innerHTML=html;c.appendChild(d);scroll();
+}
+function showOpts(items){
+  const o=document.getElementById('opts');
+  o.innerHTML='';
+  items.forEach(item=>{
+    const btn=document.createElement('button');
+    btn.className='opt';
+    btn.innerHTML=`<span class="opt-icon">${item.e}</span><span>${item.l}</span>`;
+    btn.onclick=()=>{disableOpts();addUser(item.l);item.fn();};
+    o.appendChild(btn);
+  });
+}
+function showInput(placeholder,cb,inputMode='text'){
+  const o=document.getElementById('opts');
+  o.innerHTML=`<div class="irow"><input class="inp" id="inp" placeholder="${placeholder}" inputmode="${inputMode}" autocomplete="off"/><button class="sbtn" onclick="submitInput()">➤</button></div>`;
+  setTimeout(()=>document.getElementById('inp')?.focus(),100);
+  window._inputCb=cb;
+}
+function submitInput(){
+  const v=document.getElementById('inp')?.value?.trim();
+  if(!v){showToast('தயவுசெய்து உள்ளீடு பண்ணுங்க 🙏');return;}
+  addUser(v);clearOpts();
+  if(window._inputCb)window._inputCb(v);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Enter')submitInput();});
+
+function generateRef(){
+  const num=String(Math.floor(Math.random()*9000)+1000);
+  return'SN'+num;
+}
+function formatTimer(ms){
+  if(ms<=0)return'00:00';
+  const m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000);
+  return`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+// ===== START =====
+function startApp(lang){
+  S.lang=lang;
+  document.getElementById('entrance').classList.add('out');
+  setTimeout(()=>{
+    document.getElementById('app').classList.add('show');
+    if(lang==='ta')step1ta();else step1en();
+  },900);
+}
+
+// ===== TAMIL FLOW =====
+async function step1ta(){
+  setProgress(8,'படி 1/12');
+  const hr=new Date().getHours();
+  const greet=hr<12?'காலை வணக்கம்':hr<17?'மதிய வணக்கம்':'மாலை வணக்கம்';
+  await addBot(`${greet}! 🌿\n\nநான் <b>Sindhu Nutrition</b>-இன் உங்கள் Personal Wellness Guide.\n\nWorld No.1 Nutrition Company-க்கு வரவேற்கிறோம்! ✨\n\nமுதலில் — உங்கள் <b>பெயர்</b> சொல்லுங்க?`);
+  showInput('உங்கள் பெயர்...', v=>{
+    S.name=v.trim().charAt(0).toUpperCase()+v.trim().slice(1);
+    step1b_gender();
+  });
+}
+
+async function step1b_gender(){
+  await addBot(`வணக்கம் <b>${S.name}</b>! 😊\n\nநீங்கள்...?`);
+  const o=document.getElementById('opts');
+  o.innerHTML=`<div class="gender-row">
+    <button class="gender-btn" onclick="selectGender('சார்','Mr.')">👨 சார்</button>
+    <button class="gender-btn" onclick="selectGender('மேம்','Mrs.')">👩 மேம்</button>
+  </div>`;
+}
+
+function selectGender(g,sal){
+  S.gender=g;S.salutation=sal;
+  disableOpts();addUser(g);step2ta();
+}
+
+async function step2ta(){
+  setProgress(12,'படி 2/12');
+  await addBot(`${S.name} ${S.gender}, நீங்கள் எந்த <b>ஊர்</b>? 🏙️`);
+  showInput('உங்கள் ஊர்...', v=>{S.city=v.trim();step2b_phone();});
+}
+
+async function step2b_phone(){
+  await addBot(`${S.city} — நல்ல இடம்! 😊\n\nஉங்கள் <b>WhatsApp Number</b>? 📲`);
+  showInput('10 digit number...', v=>{
+    if(!/^\d{10}$/.test(v.replace(/\s/g,''))){
+      showToast('சரியான 10 digit number போடுங்க! 📱');
+      step2b_phone();return;
+    }
+    S.phone=v.trim();step3ta();
+  },'tel');
+}
+
+async function step3ta(){
+  setProgress(20,'படி 3/12');
+  await addBot(`${S.name} ${S.gender}, Sindhu Nutrition-க்கு <b>எப்படி வந்தீங்க?</b> 🤝`);
+  showOpts([
+    {e:'👥',l:'Friend / Referral மூலம்',fn:()=>{S.source='Referral';step4ta();}},
+    {e:'📱',l:'Social Media-ல் பார்த்தேன்',fn:()=>{S.source='Social';step4ta();}},
+    {e:'🪧',l:'Banner / Poster பார்த்தேன்',fn:()=>{S.source='Poster';step4ta();}},
+    {e:'🔹',l:'வேற வழி',fn:()=>{S.source='Others';step4ta();}}
+  ]);
+}
+
+async function step4ta(){
+  setProgress(28,'படி 4/12');
+  await addBot(`${S.name} ${S.gender}, இன்று நீங்கள் இங்கே வந்தீங்க...\n\n<b>என்ன தேடுறீங்க?</b> 🎯`);
+  showOpts([
+    {e:'💼',l:'Job வேணும்',fn:()=>{S.interest='Job';stepJobQ1();}},
+    {e:'💰',l:'Business வேணும்',fn:()=>{S.interest='Business';stepBizQ1();}},
+    {e:'🥗',l:'Health சரி பண்ணணும்',fn:()=>{S.interest='Health';stepHealthQ1();}}
+  ]);
+}
+
+// ===== JOB QUESTIONS =====
+async function stepJobQ1(){
+  setProgress(35,'படி 5/12');
+  await addBot(`💼 Job! சரியான இடம்!\n\n${S.name} ${S.gender}, <b>தற்போது என்ன பண்றீங்க?</b>`);
+  showOpts([
+    {e:'📚',l:'Student',fn:()=>{S.jobCurrent='Student';stepJobQ2();}},
+    {e:'💼',l:'Working (வேலையில் இருக்கிறேன்)',fn:()=>{S.jobCurrent='Working';stepJobQ2();}},
+    {e:'🏠',l:'Housewife',fn:()=>{S.jobCurrent='Housewife';stepJobQ2();}},
+    {e:'🔍',l:'வேலை தேடுகிறேன்',fn:()=>{S.jobCurrent='Job Seeker';stepJobQ2();}}
+  ]);
+}
+
+async function stepJobQ2(){
+  setProgress(38,'படி 5/12');
+  await addBot(`${S.name} ${S.gender}, <b>என்ன படிச்சிருக்கீங்க?</b> 🎓`);
+  showInput('உதா: 10th, 12th, Degree, MBA...', v=>{S.jobEdu=v.trim();stepJobQ3();});
+}
+
+async function stepJobQ3(){
+  setProgress(40,'படி 5/12');
+  await addBot(`<b>என்ன Salary expect பண்றீங்க?</b> 💰\n(Month-க்கு எவ்வளவு வேணும்?)`);
+  showInput('உதா: 15000, 25000...', v=>{S.jobSalary=v.trim();stepJobQ4();});
+}
+
+async function stepJobQ4(){
+  setProgress(42,'படி 5/12');
+  await addBot(`இதுல <b>ஏதாவது experience இருக்கா?</b> 💡`);
+  showOpts([
+    {e:'👥',l:'Team Management',fn:()=>{S.jobExp='Team Management';stepJobExplain();}},
+    {e:'💻',l:'MS Office / Computer',fn:()=>{S.jobExp='MS Office';stepJobExplain();}},
+    {e:'🚗',l:'Field Work',fn:()=>{S.jobExp='Field Work';stepJobExplain();}},
+    {e:'🔹',l:'எதுவும் இல்லை',fn:()=>{S.jobExp='None';stepJobExplain();}}
+  ]);
+}
+
+async function stepJobExplain(){
+  setProgress(48,'படி 6/12');
+  await addBot(`${S.name} ${S.gender}... 🌟\n\nநீங்கள் சரியான இடத்தில் இருக்கீங்க!\n\n<b>World No.1 Nutrition Company</b>-யோட உங்களுக்கு ஒரு அரிய வாய்ப்பு இருக்கு:\n\n📈 ₹30,000 – ₹1,00,000+ per month\n🏠 Work from Home option இருக்கு\n🎓 Free Training கொடுப்போம்\n⏰ Part-time / Full-time உங்கள் choice\n\nமுக்கியமா — <b>எந்த company-லயும் கிடைக்காத ஒரு விஷயம்</b> இங்கே இருக்கு:\n\nஉங்கள் <b>health பாத்துக்கிட்டே income</b> பண்ணலாம்! உங்கள் health நல்லா இருந்தா job இன்னும் நல்லா நடக்கும்.\n\nஒரு minute — உங்கள் health status பாக்கலாம்! 💪`);
+  setTimeout(()=>stepHealthQ1(),1500);
+}
+
+// ===== BUSINESS QUESTIONS =====
+async function stepBizQ1(){
+  setProgress(35,'படி 5/12');
+  await addBot(`💰 Business! கொடுத்து வச்சவங்க நீங்க!\n\n${S.name} ${S.gender}, <b>இதுக்கு முன்னாடி business பண்ணி இருக்கீங்களா?</b>`);
+  showOpts([
+    {e:'✅',l:'ஆமா, business பண்ணி இருக்கேன்',fn:()=>{S.bizPrevious='Yes';stepBizQ2();}},
+    {e:'🆕',l:'இல்லை, புதுசா start பண்ணனும்',fn:()=>{S.bizPrevious='No';stepBizQ2();}}
+  ]);
+}
+
+async function stepBizQ2(){
+  setProgress(40,'படி 5/12');
+  await addBot(`${S.name} ${S.gender}, <b>Business-ல் என்ன experience இருக்கா?</b> 💡\n(இல்லை என்றால் "இல்லை" போடுங்க)`);
+  showInput('உங்கள் experience...', v=>{S.bizExp=v.trim();stepBizQ3();});
+}
+
+async function stepBizQ3(){
+  setProgress(44,'படி 5/12');
+  await addBot(`<b>Team manage பண்ண ready-யா?</b> 👥`);
+  showOpts([
+    {e:'💪',l:'ஆமா, ready!',fn:()=>{S.bizTeam='Ready';stepBizExplain();}},
+    {e:'📖',l:'கத்துக்கணும்',fn:()=>{S.bizTeam='Learning';stepBizExplain();}}
+  ]);
+}
+
+async function stepBizExplain(){
+  setProgress(48,'படி 6/12');
+  await addBot(`${S.name} ${S.gender}... 🌟\n\n<b>World No.1 Nutrition Company</b>-யோட Business Partner ஆவது உங்கள் சிறந்த decision!\n\n🚀 Low Investment — High Return\n🌐 Online + Offline Business\n👥 Team Build பண்ணி Passive Income\n💎 Exclusive Territory கிடைக்கும்\n\nஒரு important truth:\n<b>"Healthy-யா இருந்தால் மட்டுமே business நன்றாக நடக்கும்!"</b>\n\nWorld No.1 Nutrition Company-யோட பயணம் பண்ண <b>நீங்கள் கொடுத்து வச்சிருக்கணும்!</b>\n\nமுதலில் உங்கள் health status பாக்கலாம்! 💪`);
+  setTimeout(()=>stepHealthQ1(),1500);
+}
+
+// ===== HEALTH QUESTIONS =====
+async function stepHealthQ1(){
+  setProgress(50,'படி 7/12');
+  let intro='';
+  if(S.interest==='Health'){
+    intro=`${S.name} ${S.gender}, நீங்கள் health-க்காக வந்திருக்கீங்க — <b>சரியான இடம்!</b>\n\nஉங்கள் health goal நாங்க நிறைவேற்றுவோம். கூடவே ஒரு income opportunity-யும் இருக்கு! 💰\n\n`;
+  }
+  await addBot(`${intro}<b>என்ன goal?</b> 🎯`);
+  showOpts([
+    {e:'⚖️',l:'Weight Loss பண்ணணும்',fn:()=>{S.goal='Weight Loss';stepHealthQ2();}},
+    {e:'📈',l:'Weight Gain வேணும்',fn:()=>{S.goal='Weight Gain';stepHealthQ2();}},
+    {e:'🔹',l:'வேற problem இருக்கு',fn:()=>{S.goal='Others';stepHealthQ2();}}
+  ]);
+}
+
+async function stepHealthQ2(){
+  setProgress(54,'படி 7/12');
+  await addBot(`${S.name} ${S.gender}, ஏதாவது <b>tablet / medicine</b> சாப்பிடுறீங்களா? 💊`);
+  showOpts([
+    {e:'✅',l:'ஆமா, சாப்பிடுறேன்',fn:()=>{S.medicine='Yes';stepHealthQ3();}},
+    {e:'❌',l:'இல்லை',fn:()=>{S.medicine='No';stepHealthQ3();}}
+  ]);
+}
+
+async function stepHealthQ3(){
+  setProgress(57,'படி 7/12');
+  await addBot(`ஏதாவது <b>health problem / allergy</b> இருக்கா? 🏥\n(இல்லை என்றால் "இல்லை" போடுங்க)`);
+  showInput('Health issues...', v=>{S.healthProblem=v.trim();stepWeightInput();});
+}
+
+// ===== WEIGHT + HEIGHT =====
+async function stepWeightInput(){
+  setProgress(62,'படி 8/12');
+  await addBot(`${S.name} ${S.gender}, இப்போ உங்கள் <b>Health Profile</b> ready பண்ணுவோம்! 📋\n\nஉங்கள் <b>Weight</b> என்ன? ⚖️\n(kg-ல் போடுங்க)`);
+  showInput('உதா: 65', v=>{
+    if(isNaN(parseFloat(v))||parseFloat(v)<20||parseFloat(v)>250){
+      showToast('சரியான weight போடுங்க (kg) 🙏');
+      stepWeightInput();return;
+    }
+    S.weight=v.trim();stepHeightInput();
+  },'decimal');
+}
+
+async function stepHeightInput(){
+  setProgress(66,'படி 9/12');
+  await addBot(`உங்கள் <b>Height</b> என்ன? 📏\n(cm-ல் போடுங்க. உதா: 165)`);
+  showInput('உதா: 165', v=>{
+    if(isNaN(parseFloat(v))||parseFloat(v)<100||parseFloat(v)>220){
+      showToast('சரியான height போடுங்க (cm) 🙏');
+      stepHeightInput();return;
+    }
+    S.height=v.trim();stepBMI();
+  },'decimal');
+}
+
+// ===== BMI =====
+function calcBMI(w,h){
+  const wkg=parseFloat(w);
+  const hm=parseFloat(h)/100;
+  if(!wkg||!hm||hm<1)return null;
+  return parseFloat((wkg/(hm*hm)).toFixed(1));
+}
+
+async function stepBMI(){
+  setProgress(75,'படி 10/12');
+  const bmi=calcBMI(S.weight,S.height);
+  S.bmi=bmi||22;
+
+  let bmiLabel,bmiColor,prodMsg,score,analysisItems;
+  if(!bmi){
+    bmiLabel='கணக்கிட முடியவில்லை';bmiColor=var_gold();score=65;
+    prodMsg='உங்களுக்கு பொருத்தமான plan இருக்கு!';
+    analysisItems=['உங்கள் health-க்கு தகுந்த plan தயார் பண்ணுவோம்.'];
+  } else if(bmi<18.5){
+    bmiLabel='Underweight';bmiColor='#64b5f6';score=55;
+    prodMsg='Weight Gain Plan + Protein Supplement!';
+    analysisItems=[
+      `BMI ${S.bmi} — Underweight zone-ல் இருக்கீங்க`,
+      'உடல் எடை குறைவாக உள்ளது — energy குறைவாக இருக்கும்',
+      'சரியான nutrition மூலம் healthy weight achieve பண்ணலாம்!'
+    ];
+  } else if(bmi<25){
+    bmiLabel='நல்ல BMI ✅';bmiColor='#4cba7a';score=82;
+    prodMsg='Maintenance Plan + Energy Booster!';
+    analysisItems=[
+      `BMI ${S.bmi} — Healthy zone-ல் இருக்கீங்க 👏`,
+      'இந்த healthy weight maintain பண்ண proper nutrition வேணும்',
+      'Energy levels இன்னும் boost பண்ணலாம்!'
+    ];
+  } else if(bmi<30){
+    bmiLabel='Overweight';bmiColor='#ffb74d';score=62;
+    prodMsg='Fat Burn Plan + Metabolism Booster!';
+    analysisItems=[
+      `BMI ${S.bmi} — Overweight zone-ல் இருக்கீங்க`,
+      'Energy குறைவாக இருக்கும், joints-ல் pressure அதிகமாக இருக்கும்',
+      'Metabolism slow-ஆ இருக்கு — சரி பண்ணலாம்!'
+    ];
+  } else {
+    bmiLabel='Obese';bmiColor='#ef5350';score=48;
+    prodMsg='Medical Nutrition Plan + Expert Guidance!';
+    analysisItems=[
+      `BMI ${S.bmi} — High risk zone-ல் இருக்கீங்க ⚠️`,
+      'BP, Sugar, Joint pain வரும் risk இருக்கு',
+      'இன்னைக்கே action எடுக்கணும் — நாங்க help பண்றோம்!'
+    ];
+  }
+  S.score=score;S.bmiLabel=bmiLabel;
+
+  await addBot(`${S.name} ${S.gender}, உங்கள் <b>Health Report</b> ready! 📊`);
+
+  const arc=makeBMIArc(S.bmi,bmiColor);
+  const bmiHTML=`<div class="bmi-card">
+    <div class="bmi-title">🌿 Health Analysis Report</div>
+    <div class="bmi-gauge"><svg class="bmi-arc" viewBox="0 0 130 65">${arc}</svg></div>
+    <div class="bmi-val" style="color:${bmiColor}">${S.bmi}</div>
+    <div class="bmi-label">${bmiLabel}</div>
+    <div class="score-wrap">
+      <div class="score-text"><span>Health Score</span><span id="scoreNum">0%</span></div>
+      <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+    </div>
+    <div class="prod-badge">🌿 ${S.name} ${S.gender}-க்கு: ${prodMsg}</div>
+  </div>`;
+  addCustom(bmiHTML);
+
+  setTimeout(()=>{
+    document.getElementById('scoreFill').style.width=score+'%';
+    animCount('scoreNum',score,'%',1400);
+  },400);
+
+  // Analysis message
+  setTimeout(async()=>{
+    const analysisHTML=`<div class="analysis-card">
+      <div class="analysis-title">📋 உங்கள் Health Analysis</div>
+      ${analysisItems.map(a=>`<div class="analysis-item"><span>→</span><span>${a}</span></div>`).join('')}
+    </div>`;
+    addCustom(analysisHTML);
+
+    // Health opportunity for health users
+    if(S.interest==='Health'){
+      setTimeout(async()=>{
+        await addBot(`${S.name} ${S.gender}, நீங்கள் <b>${S.goal}</b>-க்காக வந்திருக்கீங்க!\n\nஒரு <b>lucky</b> விஷயம் சொல்றேன்:\n\nEந்த ஒரு company-லயும் உங்கள் health சரி பண்ணிக்கிட்டே income கொடுக்க மாட்டாங்க!\n\n<b>ஆனா உங்களுக்கு luck அடிச்சிருக்கு!</b>\n\nWorld No.1 Nutrition Company-யோட — உங்கள் health சரி பண்ணிக்கிட்டே <b>₹30,000+ per month income</b> பண்ணலாம்! 🏆`,800);
+        setTimeout(()=>stepPackageReveal(),2000);
+      },1500);
+    } else {
+      setTimeout(()=>stepPackageReveal(),2000);
+    }
+  },2000);
+}
+
+function var_gold(){return'#c9a227';}
+
+function makeBMIArc(bmi,color){
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const pct=clamp((bmi-10)/(45-10),0,1);
+  const angle=-Math.PI+pct*Math.PI;
+  const r=55,cx=65,cy=62;
+  const ex=cx+r*Math.cos(angle),ey=cy+r*Math.sin(angle);
+  return`
+    <path d="M10,62 A55,55 0 0,1 120,62" fill="none" stroke="#ffffff08" stroke-width="10" stroke-linecap="round"/>
+    <path d="M10,62 A55,55 0 0,1 ${ex},${ey}" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round" style="filter:drop-shadow(0 0 6px ${color}88)"/>
+    <circle cx="${ex}" cy="${ey}" r="6" fill="${color}" style="filter:drop-shadow(0 0 8px ${color})"/>
+  `;
+}
+
+function animCount(id,target,suffix,duration){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const start=Date.now();
+  const tick=()=>{
+    const p=Math.min((Date.now()-start)/duration,1);
+    el.textContent=Math.round(target*p)+suffix;
+    if(p<1)requestAnimationFrame(tick);
+  };
+  tick();
+}
+
+// ===== PACKAGE REVEAL =====
+async function stepPackageReveal(){
+  setProgress(82,'படி 11/12');
+
+  await addBot(`${S.name} ${S.gender}... 🎁\n\nநாங்கள் உங்கள் health analyze பண்ணினோம்.\n\n<b>இன்னைக்கு register பண்றவங்களுக்கு மட்டும்</b> — இந்த முழு package கிடைக்கும்:`,800);
+
+  const pkgItems = S.interest==='Job'
+    ? ['Free Health Checkup','Personal Guidance','WhatsApp Guidance & Explanation','Free Training (30 Days)','Food Chart (உங்களுக்கு specially)']
+    : ['Free Health Checkup','Personal Guidance','WhatsApp Guidance & Explanation','Free Training (30 Days)','Exclusive Member Benefits'];
+
+  const pkgHTML=`<div class="pay-card">
+    <div class="price-box">
+      <div class="price-was">மொத்த package value: ₹5,500</div>
+      <div class="price-now">₹${CFG.amount}</div>
+      <div class="price-note">⚡ இன்னைக்கு ஒரே ஒரு நாள் மட்டும்!</div>
+    </div>
+    <div class="pkg-list">
+      ${pkgItems.map(i=>`<div class="pkg-item"><span class="check">✅</span><span>${i}</span></div>`).join('')}
+    </div>
+  </div>`;
+  addCustom(pkgHTML);
+
+  setTimeout(async()=>{
+    await addBot(`${S.name} ${S.gender}, வெறும் <b>₹${CFG.amount}</b> invest பண்றதன் மூலம்:\n\n✨ உங்கள் health மாறும்\n💰 Income வரும்\n🌟 வாழ்க்கை மாறும்!\n\n<b>இந்த ஒரு decision உங்கள் வாழ்க்கையை மாற்றும்!</b>\n\nயோசிக்கவே வேண்டாம் — இன்னைக்கே தொடங்குங்க! 🚀`,1000);
+    setTimeout(()=>stepPayment(),2000);
+  },1000);
+}
+
+// ===== PAYMENT =====
+async function stepPayment(){
+  setProgress(90,'படி 12/12');
+  S.refId=generateRef();
+  const expiry=Date.now()+15*60*1000;
+
+  const payHTML=`<div class="pay-card" id="paycard">
+    <div class="pay-timer">
+      <div class="timer-label">⏰ இந்த offer முடிவடைகிறது</div>
+      <div class="timer-val" id="timerVal">15:00</div>
+    </div>
+    <div class="fomo-bar">
+      <div class="fomo-pulse"></div>
+      <span>🔥 இன்று <b>${CFG.joinsToday}</b> பேர் join ஆனார்கள்!</span>
+    </div>
+    <div class="price-box">
+      <div class="price-was">₹5,500 worth package</div>
+      <div class="price-now">₹${CFG.amount}</div>
+      <div class="price-note">இன்னைக்கு மட்டும்!</div>
+    </div>
+    <button class="pay-btn" onclick="showQRSection()">💳 இப்பவே ₹${CFG.amount} Pay பண்ணுங்க →</button>
+    <button class="share-alt" onclick="goShareFirst()">💬 பணம் இல்லையா? 10 பேருக்கு Share பண்ணுங்க</button>
+    <div class="qr-section" id="qrSection">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=${CFG.upi}&pn=SindhuNutrition&am=${CFG.amount}&cu=INR" alt="QR Code"/>
+      <div class="upi-label">UPI: <span>${CFG.upi}</span></div>
+      <div style="font-size:.72rem;color:var(--muted);margin-bottom:10px;">பெயர்: ${CFG.name}</div>
+      <div class="upi-btns">
+        <button class="upi-btn" onclick="openUPI('gpay')">🟢 GPay</button>
+        <button class="upi-btn" onclick="openUPI('phonepe')">🟣 PhonePe</button>
+        <button class="upi-btn" onclick="openUPI('paytm')">🔵 Paytm</button>
+        <button class="upi-btn" onclick="openUPI('upi')">💳 Any UPI</button>
+      </div>
+      <button class="paid-confirm" onclick="paymentDone()">✅ Payment பண்ணிட்டேன்!</button>
+    </div>
+  </div>`;
+  addCustom(payHTML);
+
+  S.timerInterval=setInterval(()=>{
+    const left=expiry-Date.now();
+    const tv=document.getElementById('timerVal');
+    if(tv)tv.textContent=formatTimer(left);
+    if(left<=0){clearInterval(S.timerInterval);if(tv)tv.textContent='Offer முடிந்தது!';}
+  },1000);
+
+  document.getElementById('foot').style.display='none';
+}
+
+function showQRSection(){
+  document.getElementById('qrSection').style.display='block';
+  document.querySelector('.pay-btn').style.display='none';
+  document.querySelector('.share-alt').style.display='none';
+}
+
+function openUPI(app){
+  const base=`pa=${CFG.upi}&pn=SindhuNutrition&am=${CFG.amount}&cu=INR&tn=SindhuNutrition`;
+  const urls={gpay:`gpay://upi/pay?${base}`,phonepe:`phonepe://pay?${base}`,paytm:`paytmmp://pay?${base}`,upi:`upi://pay?${base}`};
+  window.location.href=urls[app]||urls.upi;
+}
+
+function paymentDone(){
+  S.payment='Paid ₹'+CFG.amount;
+  clearInterval(S.timerInterval);
+  saveRegistration();
+  stepReferral();
+}
+
+function goShareFirst(){
+  disableOpts();
+  stepReferral();
+}
+
+// ===== REFERRAL =====
+async function stepReferral(){
+  setProgress(95,'கிட்டத்தட்ட முடிஞ்சுடுச்சு!');
+  clearInterval(S.timerInterval);
+
+  const refCode='SN'+S.phone.slice(-4);
+  S.refId=refCode;
+
+  const shareText=`🌿 *SINDHU NUTRITION*\n\nHealth • Wealth • Happiness — ஒரே இடத்தில்!\n\n💼 Job | 💰 Business | 🥗 Health\n\nஉங்களுக்கும் உங்கள் friends-க்கும் ஒரு வாய்ப்பு!\n\n👉 Register: ${window.location.href}\n\n🆔 Referral Code: ${refCode}\n📞 Contact: ${CFG.phone}`;
+
+  await addBot(`${S.name} ${S.gender}, ஒரு முக்கியமான விஷயம்! 🎁\n\nஉங்கள் friends-க்கு — <b>Health issues, Job தேவை, Business opportunity</b> — எதுவாவது இருந்தால்...\n\nஇந்த link share பண்ணுங்க! உங்கள் <b>unique referral code</b> மூலம் அவங்க வந்தால் உங்களுக்கு reward கிடைக்கும்! 💰`,800);
+
+  const shareHTML=`<div class="share-card">
+    <div class="ref-code-box">
+      <div class="ref-code-label">உங்கள் Referral Code</div>
+      <div class="ref-code">${refCode}</div>
+    </div>
+    <div class="ref-reward">
+      <div class="ref-reward-title">🏆 Referral Reward:</div>
+      <div class="ref-reward-item"><span>👥</span><span>உங்கள் code மூலம் <b>10 பேர்</b> join ஆனால்</span></div>
+      <div class="ref-reward-item"><span>💰</span><span>உங்கள் account-ல் <b>₹3,000 credit</b> ஆகும்!</span></div>
+      <div class="ref-reward-item"><span>📲</span><span>உங்கள் ID use பண்ணி வந்தால் automatically track ஆகும்</span></div>
+    </div>
+    <button class="share-btn" onclick="doShare('${encodeURIComponent(shareText)}')">💬 10 பேருக்கு WhatsApp Share பண்ணுங்க →</button>
+  </div>`;
+  addCustom(shareHTML);
+
+  setTimeout(()=>stepThankYou(),2000);
+}
+
+function doShare(txt){
+  const decoded=decodeURIComponent(txt);
+  if(navigator.share){
+    navigator.share({title:'Sindhu Nutrition',text:decoded,url:window.location.href}).catch(()=>{});
+  } else {
+    window.open(`https://wa.me/?text=${encodeURIComponent(decoded)}`,'_blank');
+  }
+}
+
+// ===== THANK YOU =====
+async function stepThankYou(){
+  setProgress(100,'✅ Complete!');
+  launchConfetti();
+
+  await addBot(`நன்றி ${S.name} ${S.gender}! 🙏\n\nஒரு decision — உங்கள் வாழ்க்கையை மாற்றப் போகிறது! ✨`,500);
+
+  const tyHTML=`<div class="ty-card">
+    <div class="ty-icon">🎉</div>
+    <div class="ty-name">வாழ்த்துக்கள் ${S.name} ${S.gender}!</div>
+    <div class="ty-ref">${S.refId}</div>
+    <div class="hwh">
+      <div class="hwh-item"><span class="hwh-icon">❤️</span><span class="hwh-label">Health</span></div>
+      <div class="hwh-item"><span class="hwh-icon">💰</span><span class="hwh-label">Wealth</span></div>
+      <div class="hwh-item"><span class="hwh-icon">😊</span><span class="hwh-label">Happiness</span></div>
+    </div>
+    <div class="ty-msg">
+      ${S.name} ${S.gender}, நீங்கள் <b>${S.interest}</b>-க்காக வந்திருக்கீங்க — நாங்கள் analyze பண்ணிட்டோம். 🌟<br/><br/>எங்கள் <b>சார் & மேம்</b> உங்களுக்கு personally connect ஆகி full details explain பண்ணுவாங்க. உங்கள் அடுத்த step-க்கு அவங்க கூட்டிட்டு போவாங்க! 🚀<br/><br/><b>Health • Wealth • Happiness</b> — மூன்றும் ஒரே இடத்தில் உங்களுக்காக காத்திருக்கு!
+    </div>
+    <div class="contact-btns">
+      <button class="cbtn call" onclick="window.location.href='tel:${CFG.phone}'">📞 Call பண்ணுங்க</button>
+      <button class="cbtn wa" onclick="window.open('https://wa.me/91${CFG.phone}?text=${encodeURIComponent('வணக்கம்! நான் '+S.name+'. Ref: '+S.refId+' — மேலும் தெரிஞ்சுக்கணும்!')}')">💬 WhatsApp</button>
+    </div>
+  </div>`;
+  addCustom(tyHTML);
+  document.getElementById('foot').style.display='none';
+
+  saveRegistration();
+}
+
+// ===== SAVE REGISTRATION =====
+function saveRegistration(){
+  try{
+    const regs=JSON.parse(localStorage.getItem('sn_regs')||'[]');
+    const reg={
+      id:S.refId,
+      name:S.name,
+      gender:S.gender,
+      city:S.city,
+      phone:S.phone,
+      source:S.source,
+      interest:S.interest,
+      goal:S.goal||'',
+      bmi:S.bmi,
+      bmiLabel:S.bmiLabel,
+      payment:S.payment||'Pending',
+      date:new Date().toLocaleString('ta-IN'),
+      lang:S.lang
+    };
+    regs.unshift(reg);
+    localStorage.setItem('sn_regs',JSON.stringify(regs));
+  }catch(e){}
+}
+
+// ===== CONFETTI =====
+function launchConfetti(){
+  const canvas=document.createElement('canvas');
+  canvas.className='conf';
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  document.body.appendChild(canvas);
+  const ctx=canvas.getContext('2d');
+  const colors=['#c9a227','#f5e08a','#1a6b3c','#4cba7a','#fff8f0','#e8c84a'];
+  const pieces=Array.from({length:80},()=>({
+    x:Math.random()*canvas.width,y:-20,
+    w:Math.random()*10+4,h:Math.random()*6+3,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    rot:Math.random()*360,vx:(Math.random()-.5)*4,
+    vy:Math.random()*4+2,vr:Math.random()*6-3
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;
+      ctx.save();ctx.translate(p.x+p.w/2,p.y+p.h/2);ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.globalAlpha=Math.max(0,1-frame/120);
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();
+    });
+    frame++;if(frame<140)requestAnimationFrame(draw);else canvas.remove();
+  }
+  draw();
+}
+
+// ===== ENGLISH FLOW =====
+async function step1en(){
+  setProgress(8,'Step 1/12');
+  const hr=new Date().getHours();
+  await addBot(`Good ${hr<12?'Morning':hr<17?'Afternoon':'Evening'}! 🌿\n\nWelcome to <b>World No.1 Nutrition Company</b>!\n\nI'm your Personal Wellness Guide from Sindhu Nutrition. ✨\n\nWhat's your <b>name</b>?`);
+  showInput('Your name...', v=>{
+    S.name=v.trim().charAt(0).toUpperCase()+v.trim().slice(1);
+    step1b_gender_en();
+  });
+  document.getElementById('hdrStatus').textContent='Online — Waiting for you';
+}
+
+async function step1b_gender_en(){
+  await addBot(`Hello <b>${S.name}</b>! 😊\n\nYou are...?`);
+  const o=document.getElementById('opts');
+  o.innerHTML=`<div class="gender-row">
+    <button class="gender-btn" onclick="selectGenderEn('Sir','Mr.')">👨 Sir</button>
+    <button class="gender-btn" onclick="selectGenderEn('Mam','Mrs.')">👩 Mam</button>
+  </div>`;
+}
+
+function selectGenderEn(g,sal){
+  S.gender=g;S.salutation=sal;
+  disableOpts();addUser(g);step2en();
+}
+
+async function step2en(){
+  setProgress(12,'Step 2/12');
+  await addBot(`${S.name} ${S.gender}, which <b>city</b> are you from? 🏙️`);
+  showInput('Your city...', v=>{S.city=v.trim();step2b_phone_en();});
+}
+
+async function step2b_phone_en(){
+  await addBot(`Great! Your <b>WhatsApp Number</b>? 📲`);
+  showInput('10 digit number...', v=>{
+    if(!/^\d{10}$/.test(v.replace(/\s/g,''))){
+      showToast('Please enter a valid 10 digit number! 📱');
+      step2b_phone_en();return;
+    }
+    S.phone=v.trim();step3en();
+  },'tel');
+}
+
+async function step3en(){
+  setProgress(20,'Step 3/12');
+  await addBot(`${S.name} ${S.gender}, how did you find <b>Sindhu Nutrition?</b> 🤝`);
+  showOpts([
+    {e:'👥',l:'Friend / Referral',fn:()=>{S.source='Referral';step4en();}},
+    {e:'📱',l:'Social Media',fn:()=>{S.source='Social';step4en();}},
+    {e:'🪧',l:'Banner / Poster',fn:()=>{S.source='Poster';step4en();}},
+    {e:'🔹',l:'Others',fn:()=>{S.source='Others';step4en();}}
+  ]);
+}
+
+async function step4en(){
+  setProgress(28,'Step 4/12');
+  await addBot(`${S.name} ${S.gender}, <b>what brings you here today?</b> 🎯`);
+  showOpts([
+    {e:'💼',l:'I need a Job',fn:()=>{S.interest='Job';stepJobQ1_en();}},
+    {e:'💰',l:'I want Business',fn:()=>{S.interest='Business';stepBizQ1_en();}},
+    {e:'🥗',l:'Health Goals',fn:()=>{S.interest='Health';stepHealthQ1_en();}}
+  ]);
+}
+
+async function stepJobQ1_en(){
+  setProgress(35,'Step 5/12');
+  await addBot(`💼 Job! Great choice!\n\n${S.name} ${S.gender}, <b>what are you currently doing?</b>`);
+  showOpts([
+    {e:'📚',l:'Student',fn:()=>{S.jobCurrent='Student';stepJobQ2_en();}},
+    {e:'💼',l:'Currently Working',fn:()=>{S.jobCurrent='Working';stepJobQ2_en();}},
+    {e:'🏠',l:'Housewife',fn:()=>{S.jobCurrent='Housewife';stepJobQ2_en();}},
+    {e:'🔍',l:'Job Seeker',fn:()=>{S.jobCurrent='Job Seeker';stepJobQ2_en();}}
+  ]);
+}
+async function stepJobQ2_en(){
+  await addBot(`${S.name} ${S.gender}, <b>what is your education?</b> 🎓`);
+  showInput('e.g. 10th, Degree, MBA...', v=>{S.jobEdu=v.trim();stepJobQ3_en();});
+}
+async function stepJobQ3_en(){
+  await addBot(`<b>What salary do you expect?</b> 💰`);
+  showInput('e.g. 15000, 25000...', v=>{S.jobSalary=v.trim();stepJobQ4_en();});
+}
+async function stepJobQ4_en(){
+  await addBot(`Do you have <b>any relevant experience?</b> 💡`);
+  showOpts([
+    {e:'👥',l:'Team Management',fn:()=>{S.jobExp='Team Management';stepJobExplain_en();}},
+    {e:'💻',l:'MS Office / Computer',fn:()=>{S.jobExp='MS Office';stepJobExplain_en();}},
+    {e:'🚗',l:'Field Work',fn:()=>{S.jobExp='Field Work';stepJobExplain_en();}},
+    {e:'🔹',l:'None',fn:()=>{S.jobExp='None';stepJobExplain_en();}}
+  ]);
+}
+async function stepJobExplain_en(){
+  setProgress(48,'Step 6/12');
+  await addBot(`${S.name} ${S.gender}... 🌟\n\nYou're in the <b>right place!</b>\n\nWith <b>World No.1 Nutrition Company</b>:\n\n📈 ₹30,000 – ₹1,00,000+ per month\n🏠 Work from Home\n🎓 Free Training provided\n⏰ Part-time / Full-time your choice\n\n<b>Something no other company offers:</b>\n\nEarn income while <b>taking care of your health!</b>\n\nFirst — let's check your health! 💪`);
+  setTimeout(()=>stepHealthQ1_en(),1500);
+}
+
+async function stepBizQ1_en(){
+  setProgress(35,'Step 5/12');
+  await addBot(`💰 Business! You're blessed!\n\n${S.name} ${S.gender}, <b>have you done business before?</b>`);
+  showOpts([
+    {e:'✅',l:'Yes, I have experience',fn:()=>{S.bizPrevious='Yes';stepBizQ2_en();}},
+    {e:'🆕',l:'No, starting fresh',fn:()=>{S.bizPrevious='No';stepBizQ2_en();}}
+  ]);
+}
+async function stepBizQ2_en(){
+  await addBot(`<b>What business experience do you have?</b> (Type "None" if not applicable)`);
+  showInput('Your experience...', v=>{S.bizExp=v.trim();stepBizQ3_en();});
+}
+async function stepBizQ3_en(){
+  await addBot(`<b>Are you ready to manage a team?</b> 👥`);
+  showOpts([
+    {e:'💪',l:"Yes, I'm ready!",fn:()=>{S.bizTeam='Ready';stepBizExplain_en();}},
+    {e:'📖',l:'I will learn',fn:()=>{S.bizTeam='Learning';stepBizExplain_en();}}
+  ]);
+}
+async function stepBizExplain_en(){
+  setProgress(48,'Step 6/12');
+  await addBot(`${S.name} ${S.gender}... 🌟\n\nBecoming a <b>World No.1 Nutrition Company</b> Business Partner is your best decision!\n\n🚀 Low Investment — High Return\n🌐 Online + Offline Business\n👥 Team-based Passive Income\n\n<b>"A healthy you = A successful business!"</b>\n\nLet's check your health first! 💪`);
+  setTimeout(()=>stepHealthQ1_en(),1500);
+}
+
+async function stepHealthQ1_en(){
+  setProgress(50,'Step 7/12');
+  let intro='';
+  if(S.interest==='Health') intro=`${S.name} ${S.gender}, you came for health — <b>perfect place!</b>\n\nWe'll help you achieve your goal AND earn income! 💰\n\n`;
+  await addBot(`${intro}<b>What is your main goal?</b> 🎯`);
+  showOpts([
+    {e:'⚖️',l:'Weight Loss',fn:()=>{S.goal='Weight Loss';stepHealthQ2_en();}},
+    {e:'📈',l:'Weight Gain',fn:()=>{S.goal='Weight Gain';stepHealthQ2_en();}},
+    {e:'🔹',l:'Other health issue',fn:()=>{S.goal='Others';stepHealthQ2_en();}}
+  ]);
+}
+async function stepHealthQ2_en(){
+  await addBot(`${S.name} ${S.gender}, are you taking any <b>medicine / tablets?</b> 💊`);
+  showOpts([
+    {e:'✅',l:'Yes',fn:()=>{S.medicine='Yes';stepHealthQ3_en();}},
+    {e:'❌',l:'No',fn:()=>{S.medicine='No';stepHealthQ3_en();}}
+  ]);
+}
+async function stepHealthQ3_en(){
+  await addBot(`Any <b>health problems / allergies?</b> 🏥\n(Type "None" if not applicable)`);
+  showInput('Health issues...', v=>{S.healthProblem=v.trim();stepWeightInput_en();});
+}
+async function stepWeightInput_en(){
+  setProgress(62,'Step 8/12');
+  await addBot(`${S.name} ${S.gender}, let's build your <b>Health Profile!</b> 📋\n\nYour <b>Weight?</b> ⚖️ (in kg)`);
+  showInput('e.g. 65', v=>{
+    if(isNaN(parseFloat(v))||parseFloat(v)<20||parseFloat(v)>250){showToast('Enter valid weight in kg 🙏');stepWeightInput_en();return;}
+    S.weight=v.trim();stepHeightInput_en();
+  },'decimal');
+}
+async function stepHeightInput_en(){
+  setProgress(66,'Step 9/12');
+  await addBot(`Your <b>Height?</b> 📏 (in cm, e.g. 165)`);
+  showInput('e.g. 165', v=>{
+    if(isNaN(parseFloat(v))||parseFloat(v)<100||parseFloat(v)>220){showToast('Enter valid height in cm 🙏');stepHeightInput_en();return;}
+    S.height=v.trim();stepBMI();
+  },'decimal');
+}
+
+// ===== ADMIN PANEL =====
+function openAdminLogin(){
+  document.getElementById('adminLogin').style.display='flex';
+}
+function closeAdmin(){
+  document.getElementById('adminLogin').style.display='none';
+  document.getElementById('adminPanel').style.display='none';
+}
+function checkAdminPwd(){
+  const pwd=document.getElementById('adminPwdInp').value;
+  if(pwd===CFG.adminPwd){
+    document.getElementById('adminLogin').style.display='none';
+    loadAdminPanel();
+    document.getElementById('adminPanel').style.display='block';
+  } else {
+    showToast('Wrong password! ❌');
+    document.getElementById('adminPwdInp').value='';
+  }
+}
+function loadAdminPanel(){
+  try{
+    const regs=JSON.parse(localStorage.getItem('sn_regs')||'[]');
+    document.getElementById('statTotal').textContent=regs.length;
+    document.getElementById('statPaid').textContent=regs.filter(r=>r.payment&&r.payment.includes('Paid')).length;
+    document.getElementById('statJob').textContent=regs.filter(r=>r.interest==='Job').length;
+    document.getElementById('statBiz').textContent=regs.filter(r=>r.interest==='Business').length;
+    const list=document.getElementById('regList');
+    if(regs.length===0){list.innerHTML='<div class="no-regs">Registration இல்லை இன்னும்</div>';return;}
+    list.innerHTML=regs.map(r=>`
+      <div class="reg-item">
+        <div class="reg-name">${r.name} ${r.gender} <span class="reg-badge ${r.interest==='Job'?'job':r.interest==='Business'?'biz':'health'}">${r.interest}</span></div>
+        <div class="reg-detail">
+          📍 ${r.city} | 📱 ${r.phone}<br/>
+          BMI: ${r.bmi} (${r.bmiLabel})<br/>
+          Payment: ${r.payment}<br/>
+          🆔 ${r.id}
+        </div>
+        <div class="reg-date">📅 ${r.date}</div>
+      </div>
+    `).join('');
+  }catch(e){
+    document.getElementById('regList').innerHTML='<div class="no-regs">Data load error</div>';
+  }
+}
+
+// Enter key for admin
+document.getElementById('adminPwdInp')?.addEventListener('keydown',e=>{if(e.key==='Enter')checkAdminPwd();});
+</script>
+</body>
+</html>
